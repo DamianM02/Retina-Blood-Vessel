@@ -1,0 +1,37 @@
+repos:
+  # Ogólne sprawdzenia plików
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-added-large-files
+        args: ["--maxkb=5000"]
+
+  # Lint + format (wersja = wersja ruffa w uv.lock)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.0
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  # uv.lock zgodny z pyproject.toml (wersja = `uv --version`)
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.13.1
+    hooks:
+      - id: uv-lock
+
+  # Typy: lokalnie, bo mypy musi widzieć biblioteki z .venv
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: uv run mypy
+        language: system
+        types: [python]
+        pass_filenames: false

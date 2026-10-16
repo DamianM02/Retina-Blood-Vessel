@@ -16,7 +16,7 @@ wheels/
 
 
 # Data & artifacts
-data/
+/data/
 unet_results/
 mlruns/
 mlartifacts/
@@ -27,3 +27,8 @@ mlartifacts/
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
+
+# Hydra
+/outputs/
+/multirun/
+/artifacts/

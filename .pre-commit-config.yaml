@@ -35,3 +35,9 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
+
+  # Walidacja workflowów GitHub Actions
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint

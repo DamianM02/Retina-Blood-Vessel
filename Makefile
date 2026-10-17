@@ -1,4 +1,4 @@
-.PHONY: ruff-check ruff-format mypy test check pre-commit-install pre-commit-run
+.PHONY: ruff-check ruff-format mypy test check pre-commit-install pre-commit-run download-dataset
 
 
 ruff-check:
@@ -17,3 +17,6 @@ pre-commit-run:
 	uv run pre-commit run --all-files
 
 check: ruff-check mypy test
+
+download-dataset:
+	uv run src/vessel_seg/data/download.py

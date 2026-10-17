@@ -19,4 +19,4 @@ pre-commit-run:
 check: ruff-check mypy test
 
 download-dataset:
-	uv run src/vessel_seg/data/download.py
+	uv run python -m vessel_seg.data.download

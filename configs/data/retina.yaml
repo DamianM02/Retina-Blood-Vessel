@@ -1,0 +1,32 @@
+# Relative to the repo root (Hydra >= 1.2 does not chdir by default)
+root: data/raw
+size: 512
+mask_threshold: 0.15
+
+# Validation is carved out of train; test stays untouched
+val_fraction: 0.2
+
+
+seed: 42
+
+batch_size: 16
+num_workers: 0
+
+image_transform:
+  _target_: vessel_seg.data.transforms.get_image_transform
+  _convert_: all  # pass plain lists, not ListConfig, to torchvision
+  size: ${data.size}
+  mean: null  # fill with train-split stats
+  std: null
+
+mask_transform:
+  _target_: vessel_seg.data.transforms.get_mask_transform
+  size: ${data.size}
+
+augmentation_transform:
+  _target_: vessel_seg.data.transforms.get_augmentation_transform
+  _convert_: all
+  size: ${data.size}
+  degrees: 180
+  crop_scale: [0.625, 1.0]
+  crop_p: 1.0

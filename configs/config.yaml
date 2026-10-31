@@ -1,0 +1,8 @@
+defaults:
+  - data: retina
+  - model: unet
+  - loss: jaccard
+  - optimizer: adamw
+  - scheduler: step
+  - train: default
+  - _self_

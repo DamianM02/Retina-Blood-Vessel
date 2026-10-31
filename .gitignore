@@ -13,10 +13,12 @@ wheels/
 .DS_Store
 .idea/
 
+# scratch
+scratch/
 
 
 # Data & artifacts
-data/
+/data/
 unet_results/
 mlruns/
 mlartifacts/
@@ -27,3 +29,11 @@ mlartifacts/
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
+
+# Hydra
+/outputs/
+/multirun/
+/artifacts/
+
+# Claude Code (local)
+.claude/settings.local.json

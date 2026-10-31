@@ -13,6 +13,8 @@ wheels/
 .DS_Store
 .idea/
 
+# scratch
+scratch/
 
 
 # Data & artifacts
@@ -32,3 +34,6 @@ mlartifacts/
 /outputs/
 /multirun/
 /artifacts/
+
+# Claude Code (local)
+.claude/settings.local.json

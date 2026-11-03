@@ -1,0 +1,6 @@
+# Hand-written U-Net, trained from scratch (no pretrained encoder). Outputs logits.
+_target_: vessel_seg.models.vanilla_unet.VanillaUNet
+in_channels: 3
+classes: 1
+base_channels: 32
+depth: 4

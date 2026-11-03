@@ -1,4 +1,4 @@
-.PHONY: ruff-check ruff-format mypy test check pre-commit-install pre-commit-run download-dataset
+.PHONY: ruff-check ruff-format mypy test check pre-commit-install pre-commit-run after-pull download-dataset train
 
 
 ruff-check:
@@ -18,5 +18,16 @@ pre-commit-run:
 
 check: ruff-check mypy test
 
+# Run after `git pull`: sync .venv with uv.lock and refresh pre-commit hooks
+after-pull:
+	uv sync --locked
+	uv run pre-commit install
+	uv run pre-commit install-hooks
+
+
 download-dataset:
 	uv run python -m vessel_seg.data.download
+
+train:
+	# -m cause module
+	uv run python -m  vessel_seg.scripts.train

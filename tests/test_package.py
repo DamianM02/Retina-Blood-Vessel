@@ -1,5 +1,11 @@
-import vessel_seg
+import importlib
+
+import pytest
 
 
-def test_package_imports() -> None:
-    assert hasattr(vessel_seg, "main")
+@pytest.mark.parametrize(
+    "module",
+    ["vessel_seg", "vessel_seg.config", "vessel_seg.data.datamodule", "vessel_seg.models.vanilla_unet"],
+)
+def test_modules_import(module: str) -> None:
+    importlib.import_module(module)

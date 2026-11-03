@@ -1,0 +1,6 @@
+# Baseline: smp U-Net with a pretrained ResNet-34 encoder. Outputs logits.
+_target_: segmentation_models_pytorch.Unet
+encoder_name: resnet34
+encoder_weights: imagenet  # null = train from scratch
+in_channels: 3
+classes: 1

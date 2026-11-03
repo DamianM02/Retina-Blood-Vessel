@@ -1,0 +1,6 @@
+# SegFormer: transformer encoder (Mix Transformer B1) + lightweight MLP decoder. Outputs logits.
+_target_: segmentation_models_pytorch.Segformer
+encoder_name: mit_b1
+encoder_weights: imagenet  # null = train from scratch
+in_channels: 3
+classes: 1

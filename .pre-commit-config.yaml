@@ -1,3 +1,9 @@
+# `pre-commit install` instaluje też hooki post-merge (git pull z merge)
+# i post-rewrite (git pull --rebase)
+default_install_hook_types: [pre-commit, post-merge, post-rewrite]
+# Hooki bez jawnego `stages` odpalają się tylko przy commicie
+default_stages: [pre-commit]
+
 repos:
   # Ogólne sprawdzenia plików
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -34,6 +40,15 @@ repos:
         entry: uv run mypy
         language: system
         types: [python]
+        pass_filenames: false
+
+      # Po `git pull`: zsynchronizuj .venv z uv.lock (= `make after-pull`)
+      - id: after-pull
+        name: after-pull (uv sync + pre-commit hooks)
+        entry: make after-pull
+        language: system
+        stages: [post-merge, post-rewrite]
+        always_run: true
         pass_filenames: false
 
   # Walidacja workflowów GitHub Actions

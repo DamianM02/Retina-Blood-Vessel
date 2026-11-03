@@ -1,0 +1,6 @@
+# U-Net++ (nested, dense skip connections) with a pretrained EfficientNet-B2 encoder. Outputs logits.
+_target_: segmentation_models_pytorch.UnetPlusPlus
+encoder_name: efficientnet-b2
+encoder_weights: imagenet  # null = train from scratch
+in_channels: 3
+classes: 1

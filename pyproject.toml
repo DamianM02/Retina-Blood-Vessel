@@ -12,13 +12,15 @@ dependencies = [
     "ipykernel>=7.4.0",
     "kagglehub>=1.0.2",
     "matplotlib>=3.11.2",
+    "omegaconf>=2.4.1rc2",
     "pillow>=13.0.0",
+    "segmentation-models-pytorch>=0.6.0",
     "torch>=2.14.1",
     "torchvision>=0.29.1",
 ]
 
-[project.scripts]
-vessel-seg = "vessel_seg:main"
+#[project.scripts]
+#vessel-seg = "vessel_seg:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
